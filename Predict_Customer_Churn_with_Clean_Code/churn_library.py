@@ -8,15 +8,14 @@ Date: April 23
 
 """
 import os
-import shap
-import joblib
 import logging
+
+import joblib
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from sklearn.preprocessing import normalize
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
@@ -66,23 +65,6 @@ def perform_eda(df):
         'Attrition_Flag'
     ]
 
-    quant_columns = [
-        'Customer_Age',
-        'Dependent_count',
-        'Months_on_book',
-        'Total_Relationship_Count',
-        'Months_Inactive_12_mon',
-        'Contacts_Count_12_mon',
-        'Credit_Limit',
-        'Total_Revolving_Bal',
-        'Avg_Open_To_Buy',
-        'Total_Amt_Chng_Q4_Q1',
-        'Total_Trans_Amt',
-        'Total_Trans_Ct',
-        'Total_Ct_Chng_Q4_Q1',
-        'Avg_Utilization_Ratio'
-    ]
-
     df['Churn'] = df['Attrition_Flag'].apply(
         lambda val: 0 if val == "Existing Customer" else 1)
 
@@ -120,7 +102,9 @@ def perform_eda(df):
 
 def encode_helper(df, category_list, response):
 
-    # gender encoded column
+    """
+    This function help to encode the categorical variables
+    """
 
     for category in category_list:
         category_lst = []
@@ -341,20 +325,20 @@ def train_models(X_train, X_test, y_train, y_test):
 if __name__ == "__main__":
 
     logging.info(f"Start program")
-    pth = os.path.abspath("./data/bank_data.csv")
+    pth_ = os.path.abspath("./data/bank_data.csv")
 
-    raw_df = import_data(pth)
-    logging.info(f"import_data function executed successfully")
+    raw_df = import_data(pth_)
+    logging.info("import_data function executed successfully")
 
     eda_df = perform_eda(raw_df)
-    logging.info(f"perform_eda function executed successfully")
+    logging.info("perform_eda function executed successfully")
 
     X_train, X_test, y_train, y_test = perform_feature_engineering(
         eda_df, 'Churn')
-    logging.info(f"perform_feature_engineering function executed successfully")
+    logging.info("perform_feature_engineering function executed successfully")
 
     train_models(X_train=X_train,
                  X_test=X_test,
                  y_train=y_train,
                  y_test=y_test)
-    logging.info(f"train_models function executed successfully")
+    logging.info("train_models function executed successfully")

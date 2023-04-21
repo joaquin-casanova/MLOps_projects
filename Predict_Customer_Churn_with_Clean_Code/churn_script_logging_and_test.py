@@ -11,10 +11,6 @@ import logging
 import pandas as pd
 from math import ceil
 
-
-import joblib
-import pytest
-
 from churn_library import (
     import_data,
     perform_eda,
@@ -36,7 +32,7 @@ def test_import_data():
         assert raw_df.shape[1] > 0
         assert isinstance(raw_df, pd.DataFrame)
 
-        logging.info(f"test_import_data function executed successfully")
+        logging.info("test_import_data function executed successfully")
 
     except Exception as error:
         raise error
