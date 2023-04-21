@@ -23,7 +23,6 @@ from churn_library import (
     train_models
 )
 
-
 def test_import_data():
     """
     Load the raw data in csv and return a dataframe
@@ -35,6 +34,8 @@ def test_import_data():
         assert raw_df.shape[0] > 0
         assert raw_df.shape[1] > 0
         assert type(raw_df) == pd.DataFrame
+
+        logging.info(f"test_import_data function executed successfully")
 
     except Exception as error:
         raise error
