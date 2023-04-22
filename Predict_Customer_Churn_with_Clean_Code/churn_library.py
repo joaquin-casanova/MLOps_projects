@@ -254,7 +254,7 @@ def feature_importance_plot(model, X_data, output_pth):
 
     plt.bar(range(X_data.shape[1]), importances[indices])
     plt.xticks(range(X_data.shape[1]), names, rotation=90)
-    plt.savefig(f"Images/{output_pth}/Feature_Importance.png")
+    plt.savefig(f"images/{output_pth}/Feature_Importance.png")
     plt.close()
 
 
