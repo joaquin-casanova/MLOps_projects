@@ -38,3 +38,20 @@ $ docker run -t prediction-churn python churn_library.py
 ```bash
 $ docker run -t prediction-churn pytest churn_script_logging_and_test.py   
 ```
+
+I you want also can run the proyect in your computer without Docker
+
+To install the packages you will need run the following command:
+
+```bash
+$ pipenv shell
+```
+##  Run prediction pipeline
+```bash
+$ python churn_library.py
+```
+## Run prediction test pipeline
+
+```bash
+pytest churn_script_logging_and_test.py 
+```
