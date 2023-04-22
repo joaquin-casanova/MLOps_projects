@@ -5,6 +5,11 @@ name = "pypi"
 
 [packages]
 shap = "*"
+pylint = "*"
+autopep8 = "*"
+pytest = "*"
+scikit-learn = "*"
+numpy = "*"
 
 [dev-packages]
 
